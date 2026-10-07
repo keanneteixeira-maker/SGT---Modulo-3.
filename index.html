@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema Gerenciador de Tarefas">
+    <title>Login | Sistema de Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <input type="checkbox" id="tema" class="controle-tema">
+    <label for="tema" class="botao-tema" aria-label="Alternar tema" title="Alternar tema">
+        <span class="icone-claro" aria-hidden="true">☀️</span>
+        <span class="icone-escuro" aria-hidden="true">🌙</span>
+    </label>
+
+    <div class="pagina pagina-publica">
+        <header class="cabecalpublico">
+            <p class="nome-sistema">Sistema de Gerenciamento de Tarefas</p>
+        </header>
+        <main class="conteudo-publico">
+            <section class="cartao cartao-formulario" aria-labelledby="titulo-login">
+                <div id="notificacao" class="notificacao"></div> 
+                <h1 id="titulo-login" class="titulo-cartao">Bem-vindo de volta!</h1>
+                <!-- Adicionado o ID "form-login" para capturar o evento no JavaScript -->
+                <form id="form-login" action="pages/dashboard.html" method="get" novalidate>
+                    <div class="grupo-formulario">
+                        <label for="email">Email</label>
+                        <!-- Removido o atributo required -->
+                        <input class="campo" type="email" id="email" name="email" autocomplete="email">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="senha">Senha</label>
+                        <!-- Removido o atributo required -->
+                        <input class="campo" type="password" id="senha" name="senha" autocomplete="current-password">
+                    </div>
+                    <div class="acoes-formulario">
+                        <button class="botao botao-primario" type="submit">Entrar</button>
+                    </div>
+                    <p class="link-formulario">Não tem uma conta? <a href="pages/cadastro.html">Cadastre-se</a></p>
+                </form>
+            </section>
+        </main>
+        <footer class="rodape-publico">
+            <p>© 2026 Projeto Acadêmico | <a href="#">Termos de Uso</a></p>
+        </footer>
+    </div>
+
+    <!-- Container onde as notificações vão aparecer -->
+<div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+
+    <!-- Implementação da validação em JavaScript -->
+    <script>
+        document.getElementById('form-login').addEventListener('submit', function(event) {
+            // Obtém os valores dos campos e remove espaços em branco extras
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value.trim();
+
+            // Validação: Campo Email não pode ser nulo/vazio
+            if (email === "") {
+                event.preventDefault(); // Impede o envio do formulário e o redirecionamento
+                alert("O campo Email não pode ser nulo.");
+                document.getElementById('email').focus();
+                return;
+            }
+
+            // Validação: Campo Senha não pode ser nulo/vazio
+            if (senha === "") {
+                event.preventDefault(); // Impede o envio do formulário e o redirecionamento
+                alert("O campo Senha não pode ser nulo.");
+                document.getElementById('senha').focus();
+                return;
+            }
+
+            
+        });
+        
+    </script>
+</body>
+</html>
+
+
